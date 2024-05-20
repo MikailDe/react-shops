@@ -1,64 +1,71 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 const initialState = {
-  totalPrice:0,
-  totalCount:0,
-  items:[],
-}
+  count: 0,
+  price: 0,
+  items: [],
+  status: 'idle',
+};
+
+export const fetchCart = createAsyncThunk('cart/fetchCart', async () => {
+  const { data } = await axios.get('http://localhost:3005/carts');
+  const uniqueItems = data.reduce((acc, currentItem) => {
+    const existingItemIndex = acc.findIndex(item => item.id === currentItem.id);
+    if (existingItemIndex === -1) {
+      acc.push(currentItem);
+    }
+    return acc;
+  }, []);
+  return uniqueItems;
+});
+
+export const deleteCartItem = createAsyncThunk('cart/deleteCartItem', async id => {
+  await axios.delete(`http://localhost:3005/carts/${id}`);
+  return id;
+});
 
 const cartSlice = createSlice({
-  name:'cart',
+  name: 'cart',
   initialState,
   reducers: {
+    setCount(state, action) {
+      state.count = action.payload;
+    },
     addItem(state, action) {
-      const findItems = state.items.find(obj => obj.id === action.payload.id);
-
-      if(findItems) {
-        findItems.count++;
-        state.totalCount++
+      const existingItem = state.items.find(item => item.id === action.payload.id);
+      if (existingItem) {
+        existingItem.count += 1;
       } else {
-        state.items.push(
-          {
-            ...action.payload,
-            count:1
-        });
+        state.items.push(action.payload);
       }
-      state.totalPrice = state.items.reduce((sum, obj) => {
-        return (obj.price * obj.count) + sum;
-      }, 0)
+      state.count = state.items.reduce((total, item) => total + item.count, 0);
     },
-    minusItem(state, action) {
-      const findItems = state.items.find(obj => obj.id === action.payload);
-      if(findItems) {
-        findItems.count--;
-        state.totalCount--
-      }
+  },
+  extraReducers: builder => {
+    builder
+      .addCase(fetchCart.pending, state => {
+        state.status = 'loading';
+      })
+      .addCase(fetchCart.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        const newItems = action.payload.filter(
+          item => !state.items.some(existingItem => existingItem.id === item.id),
+        );
+        state.items = [...state.items, ...newItems];
+        state.count = state.items.reduce((total, item) => total + item.count, 0);
+      })
 
-      if(findItems.count < 0) {
-        findItems.count = 0
-      }
-      
-      state.totalPrice = state.items.reduce((sum, obj) => {
-        return (obj.price * obj.count) + sum;
-      }, 0)
-    },
-    totalCounts(state) {
-      state.totalCount = state.items.reduce((sum, item) => sum + item.count,0)
-    },
-    removeItem(state, action) {
-      state.items = state.items.filter(obj => obj.id !== action.payload)
-    },
-    clearItem(state) {
-      state.items = []
-      state.totalCount = 0;
-      state.totalPrice = 0;
-    }
-  }
-})
+      .addCase(fetchCart.rejected, state => {
+        state.status = 'failed';
+      })
+      .addCase(deleteCartItem.fulfilled, (state, action) => {
+        state.items = state.items.filter(item => item.id !== action.payload);
+        state.count = state.items.length;
+      });
+  },
+});
 
-export const selectCart = (state) => state.cart
-export const selectCartItemById = (id) => (state) => state.cart.items.find((obj) => obj.id === id)
+export const { addItem, removeItem } = cartSlice.actions;
 
-export const { addItem, removeItem, minusItem, clearItem, totalCounts } = cartSlice.actions
-
-export default cartSlice.reducer
+export default cartSlice.reducer;

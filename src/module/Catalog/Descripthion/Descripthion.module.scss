@@ -1,0 +1,21 @@
+.descripthion {
+  background-color: #f9f9f9;
+  border-radius: 30px;
+  flex-grow: 1;
+
+  h3 {
+    font-size: 20px;
+    font-weight: 900;
+  }
+
+  &__title {
+    padding: 20px 0px 20px 20px;
+    border-radius: 30px;
+    background-color: #ffff;
+  }
+
+  ul {
+    line-height: 30px;
+    padding: 20px 20px 20px 20px;
+  }
+}

@@ -1,0 +1,84 @@
+.header {
+  padding: 10px 0px;
+  border-radius: 10px;
+  position: relative;
+  margin-bottom: 30px;
+
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    display: flex;
+    column-gap: 65px;
+  }
+
+  &__category {
+    display: flex;
+    column-gap: 15px;
+    align-items: center;
+  }
+
+  &__label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+
+    p {
+      font-size: 15px;
+    }
+  }
+
+  .active {
+    color: #ffa542;
+  }
+
+  &__popup {
+    color: 1C1C27;
+    position: absolute;
+    z-index: 20;
+    border-radius: 0 0 20px 20px;
+    background-color: #fff;
+    top: 50px;
+    padding: 19px 68px 27px 29px;
+
+    span {
+      font-size: 17px;
+      cursor: pointer;
+    }
+
+    .popup__container {
+      height: 0;
+      font-size: 0px;
+      opacity: 0;
+      transition: all 0.2s ease-in;
+    }
+
+    .popup__active {
+      height: 100%;
+      opacity: 1;
+      font-size: 15px;
+      transition: all 0.2s ease-in;
+    }
+
+    ul {
+      font-size: 15px;
+      display: flex;
+      flex-direction: column;
+      row-gap: 10px;
+    }
+
+    li {
+      cursor: pointer;
+    }
+  }
+
+  &__page {
+    display: flex;
+    align-items: center;
+    column-gap: 40px;
+  }
+}

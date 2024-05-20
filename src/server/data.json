@@ -1,0 +1,151 @@
+{
+  "products": [
+    {
+      "type": "headphones",
+      "count": 1,
+      "categoryName": "наушники",
+      "id": "0",
+      "title": "Apple BYZ S852I",
+      "price": 3000,
+      "rating": 4.7,
+      "img": "/img/headphones/headphones-1.png",
+      "description": {
+        "type": "проводные наушники",
+        "constructor": "вкладыши",
+        "frequency": "20Гц",
+        "impedance": "32 Ом",
+        "sensitivity": "105 дБ",
+        "power": "10 мВт",
+        "acoustic": "закрытые",
+        "fastenings": "без крепления",
+        "membranes": "14.2 мм",
+        "cable": "1.25 м",
+        "function": "регулировка громкости"
+      }
+    },
+    {
+      "type": "headphones",
+      "categoryName": "наушники",
+      "id": "1",
+      "count": 1,
+      "img": "/img/headphones/headphones-2.png",
+      "title": "Apple EarPods",
+      "price": 2500,
+      "rating": 4.7,
+      "description": {
+        "type": "беспроводные наушники",
+        "constructor": "вкладыши",
+        "frequency": "20Гц",
+        "impedance": "32 Ом",
+        "sensitivity": "105 дБ",
+        "power": "10 мВт",
+        "acoustic": "закрытые",
+        "fastenings": "без крепления",
+        "membranes": "14.2 мм",
+        "cable": "1.25 м",
+        "function": "вкл/выкл"
+      }
+    },
+    {
+      "type": "headphones",
+      "categoryName": "наушники",
+      "id": "2",
+      "count": 1,
+      "img": "/img/headphones/headphones-3.png",
+      "title": "Apple EarPods",
+      "price": 2500,
+      "rating": 4.7,
+      "description": {
+        "type": "беспроводные наушники",
+        "constructor": "вкладыши",
+        "frequency": "20Гц",
+        "impedance": "32 Ом",
+        "sensitivity": "105 дБ",
+        "power": "10 мВт",
+        "acoustic": "закрытые",
+        "fastenings": "без крепления",
+        "membranes": "14.2 мм",
+        "cable": "1.25 м",
+        "function": "вкл/выкл"
+      }
+    },
+    {
+      "type": "wireless",
+      "categoryName": "беспроводные наушники",
+      "id": "3",
+      "count": 1,
+      "img": "/img/wireless-headphones/Image.png",
+      "title": "Apple AirPods",
+      "price": 9000,
+      "rating": 5,
+      "description": {
+        "type": "беспроводные наушники",
+        "constructor": "вкладыши",
+        "frequency": "20Гц",
+        "impedance": "32 Ом",
+        "sensitivity": "105 дБ",
+        "power": "10 мВт",
+        "acoustic": "закрытые",
+        "fastenings": "без крепления",
+        "membranes": "14.2 мм",
+        "cable": "1.25 м",
+        "function": "вкл/выкл"
+      }
+    },
+    {
+      "type": "wireless",
+      "categoryName": "беспроводные наушники",
+      "id": "4",
+      "count": 1,
+      "img": "/img/wireless-headphones/Image-2.png",
+      "title": "GERLAX GH-04",
+      "price": 9000,
+      "rating": 5,
+      "description": {
+        "type": "беспроводные наушники",
+        "constructor": "вкладыши",
+        "frequency": "20Гц",
+        "impedance": "32 Ом",
+        "sensitivity": "105 дБ",
+        "power": "10 мВт",
+        "acoustic": "закрытые",
+        "fastenings": "без крепления",
+        "membranes": "14.2 мм",
+        "cable": "1.25 м",
+        "function": "вкл/выкл"
+      }
+    },
+    {
+      "type": "wireless",
+      "categoryName": "беспроводные наушники",
+      "id": "5",
+      "count": 1,
+      "img": "/img/wireless-headphones/Image-3.png",
+      "title": "BOROFONE BO4",
+      "price": 9000,
+      "rating": 5,
+      "description": {
+        "type": "беспроводные наушники",
+        "constructor": "вкладыши",
+        "frequency": "20Гц",
+        "impedance": "32 Ом",
+        "sensitivity": "105 дБ",
+        "power": "10 мВт",
+        "acoustic": "закрытые",
+        "fastenings": "без крепления",
+        "membranes": "14.2 мм",
+        "cable": "1.25 м",
+        "function": "вкл/выкл"
+      }
+    }
+  ],
+  "carts": [
+    {
+      "id": "0",
+      "img": "/img/headphones/headphones-1.png",
+      "price": 3000,
+      "title": "Apple BYZ S852I",
+      "count": 1
+    }
+  ]
+}
